@@ -22,7 +22,7 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 
 def authenticate_user(email: str, password: str) -> Optional[dict]:
-    con = sqlite3.connect("/Users/abdullaalkhasov/Dev/Python/NumDuo/data/NumDuo.db")
+    con = sqlite3.connect("../../data/NumDuo.db")
     cursor = con.cursor()
 
     cursor.execute("SELECT * FROM Users WHERE email = ?", (email,))
@@ -143,7 +143,7 @@ def verify_token(token: str) -> Optional[dict]:
 
 
 def get_user_by_id(user_id: int) -> Optional[dict]:
-    con = sqlite3.connect("/Users/abdullaalkhasov/Dev/Python/NumDuo/data/NumDuo.db")
+    con = sqlite3.connect("../../data/NumDuo.db")
     cursor = con.cursor()
 
     cursor.execute("SELECT * FROM Users WHERE id = ?", (user_id,))
@@ -160,7 +160,7 @@ def get_user_by_id(user_id: int) -> Optional[dict]:
 
 
 def add_user(user_data: User):
-    con = sqlite3.connect("/Users/abdullaalkhasov/Dev/Python/NumDuo/data/NumDuo.db")
+    con = sqlite3.connect("../../data/NumDuo.db")
     cursor = con.cursor()
     cursor.execute(f"""
                             INSERT INTO Users (username, email, password, points, level, createAt, updateAt)
@@ -179,7 +179,7 @@ def add_user(user_data: User):
 
 
 def add_problem(problem_data: Problem):
-    con = sqlite3.connect("/Users/abdullaalkhasov/Dev/Python/NumDuo/data/NumDuo.db")
+    con = sqlite3.connect("../../data/NumDuo.db")
     cursor = con.cursor()
     cursor.execute("""
                             INSERT INTO Problems (id, text, answer, level, points)
@@ -196,7 +196,7 @@ def add_problem(problem_data: Problem):
 
 
 def get_problem(id: int):
-    con = sqlite3.connect("/Users/abdullaalkhasov/Dev/Python/NumDuo/data/NumDuo.db")
+    con = sqlite3.connect("../../data/NumDuo.db")
     cursor = con.cursor()
     cursor.execute("SELECT * FROM Problems_with_variants WHERE id = ?", (id,))
     res = cursor.fetchall()
@@ -206,7 +206,7 @@ def get_problem(id: int):
 
 
 def add_achievement(achieve_data: Achieve):
-    con = sqlite3.connect("/Users/abdullaalkhasov/Dev/Python/NumDuo/data/NumDuo.db")
+    con = sqlite3.connect("../../data/NumDuo.db")
     cursor = con.cursor()
     cursor.execute("""
                             INSERT INTO achievement (title, description, picture)
@@ -222,7 +222,7 @@ def add_achievement(achieve_data: Achieve):
 
 def update_username(user_id: int, new_username: str) -> bool:
     try:
-        con = sqlite3.connect("/Users/abdullaalkhasov/Dev/Python/NumDuo/data/NumDuo.db")
+        con = sqlite3.connect("../../data/NumDuo.db")
         cursor = con.cursor()
 
         cursor.execute(
@@ -239,7 +239,7 @@ def update_username(user_id: int, new_username: str) -> bool:
 
 
 def get_user(user_id: int):
-    con = sqlite3.connect("/Users/abdullaalkhasov/Dev/Python/NumDuo/data/NumDuo.db")
+    con = sqlite3.connect("../../data/NumDuo.db")
     cursor = con.cursor()
     cursor.execute("SELECT * FROM Users WHERE id = ?", (user_id,))
     res = cursor.fetchall()
@@ -249,7 +249,7 @@ def get_user(user_id: int):
 
 
 def delete_user(user_id: int):
-    con = sqlite3.connect("/Users/abdullaalkhasov/Dev/Python/NumDuo/data/NumDuo.db")
+    con = sqlite3.connect("../../data/NumDuo.db")
     cursor = con.cursor()
     cursor.execute("DELETE FROM Users WHERE id = ?", (user_id,))
     con.commit()
@@ -259,7 +259,7 @@ def delete_user(user_id: int):
 
 
 def delete_achievement(achievement_id: int):
-    con = sqlite3.connect("/Users/abdullaalkhasov/Dev/Python/NumDuo/data/NumDuo.db")
+    con = sqlite3.connect("../../data/NumDuo.db")
     cursor = con.cursor()
     cursor.execute("DELETE FROM achievement WHERE id = ?", (achievement_id,))
     con.commit()
