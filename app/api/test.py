@@ -2,10 +2,10 @@ import sqlite3
 import pandas as pd
 
 
-df = pd.read_excel('/Users/abdullaalkhasov/Dev/Python/NumDuo/app/api/1kom (1).xlsx')
+df = pd.read_excel('')
 
 
-con = sqlite3.connect('/Users/abdullaalkhasov/Dev/Python/NumDuo/data/NumDuo.db')
+con = sqlite3.connect('')
 cur = con.cursor()
 
 
